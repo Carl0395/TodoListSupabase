@@ -27,4 +27,8 @@ struct Task: Identifiable, Codable, Hashable {
         case label
         case isCompleted = "is_completed"
     }
+    
+    func updateCompletion() -> Task {
+        return Task(id: id, label: label, isCompleted: !isCompleted)
+    }
 }

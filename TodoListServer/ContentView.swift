@@ -21,7 +21,9 @@ struct ContentView: View {
             else {
                 List {
                     ForEach(listViewModel.items) { e in
-                        ListViewItem(item: e)
+                        ListViewItem(item: e, onTap: { item in
+                            listViewModel.updateItem(item: item)
+                        })
                             .listRowSeparator(.hidden)
                             .listRowBackground(Color.white.opacity(0))
                             .padding(0)
