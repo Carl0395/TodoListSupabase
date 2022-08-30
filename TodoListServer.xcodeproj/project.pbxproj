@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C339603028BD788B0096FFCC /* DataDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C339602F28BD788B0096FFCC /* DataDecoder.swift */; };
 		C3913D0E28AE81FD003AC2CB /* TodoListServerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3913D0D28AE81FD003AC2CB /* TodoListServerApp.swift */; };
 		C3913D1028AE81FD003AC2CB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3913D0F28AE81FD003AC2CB /* ContentView.swift */; };
 		C3913D1228AE8201003AC2CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3913D1128AE8201003AC2CB /* Assets.xcassets */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C339602F28BD788B0096FFCC /* DataDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataDecoder.swift; sourceTree = "<group>"; };
 		C3913D0A28AE81FD003AC2CB /* TodoListServer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoListServer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3913D0D28AE81FD003AC2CB /* TodoListServerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListServerApp.swift; sourceTree = "<group>"; };
 		C3913D0F28AE81FD003AC2CB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -42,6 +44,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C339602C28BD786B0096FFCC /* util */ = {
+			isa = PBXGroup;
+			children = (
+				C339602F28BD788B0096FFCC /* DataDecoder.swift */,
+			);
+			path = util;
+			sourceTree = "<group>";
+		};
 		C3913D0128AE81FD003AC2CB = {
 			isa = PBXGroup;
 			children = (
@@ -61,6 +71,7 @@
 		C3913D0C28AE81FD003AC2CB /* TodoListServer */ = {
 			isa = PBXGroup;
 			children = (
+				C339602C28BD786B0096FFCC /* util */,
 				C3913D1D28AE8330003AC2CB /* ViewModels */,
 				C3913D1C28AE8329003AC2CB /* Views */,
 				C3913D1B28AE831F003AC2CB /* Models */,
@@ -182,6 +193,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3913D1028AE81FD003AC2CB /* ContentView.swift in Sources */,
+				C339603028BD788B0096FFCC /* DataDecoder.swift in Sources */,
 				C3913D0E28AE81FD003AC2CB /* TodoListServerApp.swift in Sources */,
 				C3913D2628AEA538003AC2CB /* Task.swift in Sources */,
 				C3913D2828AEF547003AC2CB /* ListViewItem.swift in Sources */,

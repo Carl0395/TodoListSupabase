@@ -24,8 +24,8 @@ class ListViewModel: ObservableObject {
             switch results {
             case let .success(response):
                 print("Success")
-//                print(String.init(data: response.data, encoding: .utf8))
-                let data = try? response.decoded(to: [Task].self)
+                print(String.init(data: response.data, encoding: .utf8))
+                let data = try? response.decoded(to: [Task].self, using: DataDecoder())
 //                print(data?[0].label)
                 
                 // Necesario para que se asigne desde el hilo principal
@@ -42,7 +42,7 @@ class ListViewModel: ObservableObject {
     }
     
     func addItem(label: String) {
-        let item = Task(id: nil, label: label, isCompleted: false)
+        let item = Task(id: nil, label: label, isCompleted: false, createdAt: .now)
         
         sendingData = true
         client.database.from("tasks").insert(values: item).execute { results in
@@ -62,8 +62,20 @@ class ListViewModel: ObservableObject {
     }
     
     func updateItem(item: Task) {
-        if let index = items.firstIndex(where: {$0.id == item.id}) {
-            items[index] = item.updateCompletion()
+        
+        client.database.from("tasks").update(values: item.updateCompletion()).execute { results in
+            switch results {
+            case let .success(res):
+                print("====== SUCCESS UPDATE =======")
+                print(res)
+                print(String.init(data: res.data, encoding: .utf8));
+                if let index = self.items.firstIndex(where: {$0.id == item.id}) {
+                    self.items[index] = item.updateCompletion()
+                }
+            case let .failure(err):
+                print("====== ERROR UPDATE =======")
+                print(err)
+            }
         }
     }
 }

@@ -35,7 +35,7 @@ struct ListViewItem: View {
 
 struct ListViewItem_Previews: PreviewProvider {
     static var previews: some View {
-        let task = Task(id: nil, label: "Tarea de muestra", isCompleted: true)
+        let task = Task(id: nil, label: "Tarea de muestra", isCompleted: true, createdAt: .now)
         ListViewItem(item: task, onTap: { item in
             print(item)
         })
