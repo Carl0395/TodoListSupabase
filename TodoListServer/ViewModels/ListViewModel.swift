@@ -20,20 +20,26 @@ class ListViewModel: ObservableObject {
     
     func getItems() {
         print("execute")
-        client.database.from("tasks").select().execute { results in
+        client.database.from("tasks").select().order(column: "created_at", ascending: true).execute { results in
             switch results {
             case let .success(response):
                 print("Success")
                 print(String.init(data: response.data, encoding: .utf8))
-                let data = try? response.decoded(to: [Task].self, using: DataDecoder())
-//                print(data?[0].label)
                 
-                // Necesario para que se asigne desde el hilo principal
-                DispatchQueue.main.async {
-                    if let tasks = data {
-                        self.items = tasks
+                do {
+                    let data = try response.decoded(to: [Task].self, using: DateDecoder())
+                    
+                    
+                    // Necesario para que se asigne desde el hilo principal
+                    DispatchQueue.main.async {
+//                        if let tasks = data {
+                            self.items = data
+//                        }
                     }
+                } catch {
+                    print("Error decoding data \(error)")
                 }
+                
             case let .failure(error):
                 print("Error")
                 print(error)
